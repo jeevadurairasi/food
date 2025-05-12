@@ -1,0 +1,76 @@
+<div class="signup-container">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div>
+      <label for="username">Username:</label>
+      <input id="username" formControlName="username" />
+      <div *ngIf="signupForm.get('username')?.hasError('required')" class="error">
+        Username is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="userid">User ID:</label>
+      <input id="userid" formControlName="userid" />
+      <div *ngIf="signupForm.get('userid')?.hasError('required')" class="error">
+        User ID is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="phone">Phone Number:</label>
+      <input id="phone" formControlName="phone" />
+      <div *ngIf="signupForm.get('phone')?.hasError('required')" class="error">
+        Phone number is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" />
+      <div *ngIf="signupForm.get('email')?.hasError('required')" class="error">
+        Email is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="address">Address:</label>
+      <input id="address" formControlName="address" />
+      <div *ngIf="signupForm.get('address')?.hasError('required')" class="error">
+        Address is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input id="password" type="password" formControlName="password" />
+      <div *ngIf="signupForm.get('password')?.hasError('required')" class="error">
+        Password is required.
+      </div>
+      <div *ngIf="signupForm.get('password')?.hasError('pattern')" class="error">
+        Password must have at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.
+      </div>
+    </div>
+
+    <div>
+      <label for="profilePhoto">Profile Photo:</label>
+      <input id="profilePhoto" type="file" (change)="onFileSelected($event)" accept="image/*" />
+      <div *ngIf="fileError" class="error">
+        {{ fileError }}
+      </div>
+    </div>
+
+    <div class="captcha-box">
+      <label for="captcha">Captcha: <span class="captcha">{{ captcha }}</span></label>
+      <button type="button" class="refresh-captcha" (click)="refreshCaptcha()">🔄</button>
+      <input id="captcha" formControlName="captchaInput" />
+    </div>
+    <div *ngIf="!isCaptchaValid" class="error">
+      Captcha is incorrect.
+    </div>
+
+    <button type="submit" [disabled]="!signupForm.valid">Register</button>
+    <div class="redirect-link">
+      <p>Already a user? <a routerLink="/login">Login</a></p>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,19 @@
+<div class="navbar">
+    <!-- Logo -->
+    <div class="navbar-logo">
+      <h1>Food Delivery</h1>
+    </div>
+  
+    <!-- Navigation Links -->
+    <div class="navbar-links">
+      <a routerLink="/order-history">Order History</a>
+      <a routerLink="/famous-restaurants">Famous Restaurants</a>
+    </div>
+  
+    <!-- User Profile Section -->
+    <div class="navbar-user">
+      <img [src]="profilePhoto || 'uploads/default-profile.png'" alt="User Profile" class="profile-pic" />
+      <span class="username" (click)="goToProfile()">{{ userId }}</span>
+      <button class="signout-button" (click)="onSignout()">Signout</button>
+    </div>
+  </div>

@@ -1,0 +1,49 @@
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <h2>Login</h2>
+    <!-- User ID / Phone -->
+    <div>
+      <label for="identifier">User ID / Phone:</label>
+      <input
+        id="identifier"
+        formControlName="identifier"
+        type="text"
+        placeholder="Enter User ID or Phone"
+      />
+    </div>
+
+    <!-- Password -->
+    <div>
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        formControlName="password"
+        type="password"
+        placeholder="Enter Password"
+      />
+    </div>
+
+    <!-- CAPTCHA -->
+    <div>
+      <label for="captcha">Captcha:</label>
+      <div>
+        <span class="captcha-code">{{ generatedCode }}</span>
+        <button type="button" (click)="generateCaptcha()">Refresh</button>
+      </div>
+      <input
+        id="captcha"
+        formControlName="captcha"
+        type="text"
+        placeholder="Enter CAPTCHA Code"
+      />
+    </div>
+
+    <!-- Login Button -->
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- Forgot Password Link -->
+  <div class="forgot-password">
+    <a (click)="onForgotPassword()">Forgot Password?</a>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="admin-login-container">
+    <h2>Admin Login</h2>
+    <form [formGroup]="adminLoginForm" (ngSubmit)="onAdminLogin()">
+      <div>
+        <label for="adminid">Admin ID:</label>
+        <input id="adminid" formControlName="adminid" type="text" placeholder="Enter Admin ID" />
+      </div>
+      <div>
+        <label for="pass">Password:</label>
+        <input id="pass" formControlName="pass" type="password" placeholder="Enter Password" />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
